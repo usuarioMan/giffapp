@@ -11,10 +11,8 @@ export const GifExpert = () => {
 
     return (
         <>
-            
             <h1>Gif Expert App</h1>
             <AddCategory/>
-            <button onClick={onAddCategory}>Add</button>
             <ol>
                 {categories.map(category => <li key={uuidv4()}>{category}</li>)}
             </ol>

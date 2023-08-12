@@ -1,14 +1,14 @@
 import { useState } from "react"
 
-export const AddCategory = () => {
+export const AddCategory = ({setCategories}) => {
     const [inputValue, setInputValue] = useState('')
 
     const onInputChange = ({target}) => {
         setInputValue(target.value)
     }
 
-    const onSubmit = (event) => {
-        console.log(event);
+    const onSubmit = () => {
+        setCategories(inputValue)
     }
 
   return (
