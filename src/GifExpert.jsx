@@ -3,16 +3,12 @@ import { v4 as uuidv4 } from 'uuid';
 import { AddCategory } from "./Components/AddCategory";
 
 export const GifExpert = () => {
-    const [categories, setCategories] = useState([ 'One Punch' , 'POTE'])
-
-    const onAddCategory = () => {
-        setCategories(['potesito', ...categories])
-    }
+    const [categories, setCategories] = useState(['pote'])
 
     return (
         <>
             <h1>Gif Expert App</h1>
-            <AddCategory/>
+            <AddCategory setCategories={setCategories} categories={categories}/>
             <ol>
                 {categories.map(category => <li key={uuidv4()}>{category}</li>)}
             </ol>
