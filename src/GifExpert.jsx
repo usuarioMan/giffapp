@@ -1,17 +1,32 @@
 import { useState } from "react"
-import { v4 as uuidv4 } from 'uuid';
 import { AddCategory } from "./Components/AddCategory";
+import { doesCategoryExist, sanitizeInput } from "../utils/inputSanitization";
+import { GiffGrid } from "./Components/GiffGrid";
+import { v4 as uuidv4 } from 'uuid';
 
 export const GifExpert = () => {
-    const [categories, setCategories] = useState(['pote'])
+    const [categories, setCategories] = useState([])
 
+    const onNewCategory = (newCategory) => {
+        const sanitaziedCategory = sanitizeInput(newCategory)
+        if (sanitaziedCategory === null | doesCategoryExist(categories, sanitaziedCategory)) return;
+        setCategories([...categories, sanitaziedCategory]);
+    }
     return (
         <>
-            <h1>Gif Expert App</h1>
-            <AddCategory setCategories={setCategories} categories={categories}/>
-            <ol>
-                {categories.map(category => <li key={uuidv4()}>{category}</li>)}
-            </ol>
+            <h1>Gif Expert App</h1>       
+            <AddCategory 
+                onNewCategory={onNewCategory}
+            />
+            {
+                categories.map((category) => (
+                        <GiffGrid
+                            key={uuidv4()}
+                            category={category}
+                        />
+                    )
+                )
+            }
         </>
     )
 }

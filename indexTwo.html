@@ -1,0 +1,20 @@
+<html>
+<body>
+  <div>Users:</div>
+  <ul>
+    <li>John</li>
+    <li>Pete</li>
+  </ul>
+  <script>
+    function MiFuncionConstructora(name){
+      this.name = name;
+    }
+    let miObjetoInstanciado = new MiFuncionConstructora('objeto Instanciado')
+    MiFuncionConstructora.prototype.greet = function () {
+      return `HOLA ${this.name}`
+    }
+    console.log(miObjetoInstanciado.greet());
+
+  </script>
+</body>
+</html>
